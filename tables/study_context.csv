@@ -1,0 +1,30 @@
+"study","country","country_cluster","year","n","label","weight_variable","weight_note","ideology_before","coverage_before","cabinet_size_before","ideology_after","coverage_after","cabinet_size_after","index_alpha"
+"AUS_2022","Australia","36",2022,3269,"Australia 2022","F1101_2","Original demographic weight",7,1,23,3,1,23,0.834961859035276
+"AUT_2024","Austria","40",2024,1569,"Austria 2024","F1101_2","Original demographic weight",5.66666666666667,0.857142857142857,14,5.14285714285714,1,14,0.870191508409572
+"BELF2024","Belgium","56",2024,1072,"Belgium · Flanders 2024","F1101_2","Original demographic weight",4.75,0.533333333333333,15,6.5,0.533333333333333,15,0.820999237597365
+"BELW2024","Belgium","56",2024,933,"Belgium · Wallonia 2024","F1101_2","Original demographic weight",3.75,0.533333333333333,15,5.25,0.533333333333333,15,0.825270561089788
+"BRA_2022","Brazil","76",2022,2001,"Brazil 2022","F1101_2","Original demographic weight",7.66666666666667,0.130434782608696,23,3.95,0.540540540540541,37,0.587751933480379
+"CHE_2023","Switzerland","756",2023,5033,"Switzerland 2023","F1101_1","Original sample weight (demographic column is constant)",5.71428571428571,1,7,5.71428571428571,1,7,0.77710171980758
+"DEU_2025","Germany","276",2025,6796,"Germany 2025","F1101_2","Original demographic weight",4.41176470588235,1,17,6,1,18,0.921524888706849
+"DNK_2022","Denmark","208",2022,1549,"Denmark 2022","F1101_2","Original demographic weight",3,1,20,3.82608695652174,1,23,0.825008033563084
+"ECU_2025","Ecuador","218",2025,1145,"Ecuador 2025","F1101_1","Original sample weight (demographic column is constant)",7,0.0416666666666667,24,7,0.1,20,0.715527939406188
+"ESP_2023","Spain","724",2023,2446,"Spain 2023","F1101_2","Original demographic weight",4,0.782608695652174,23,3.56521739130435,1,23,0.798443107764417
+"FRA_2022","France","250",2022,1575,"France 2022","unit","Unit weights; no varying demographic/sample weight in supplied file",6,0.390243902439024,41,6.05555555555556,0.642857142857143,28,0.772482972228832
+"GBR_2024","Great Britain","826",2024,1627,"Great Britain 2024","F1101_1","Original sample weight (demographic column is constant)",7,1,23,4,1,23,0.851633529069483
+"HUN_2026","Hungary","348",2026,1516,"Hungary 2026","F1101_2","Original demographic weight",9,1,15,6,0.764705882352941,17,0.754374295789485
+"KOR_2024","Republic of Korea","410",2024,1500,"South Korea 2024","F1101_1","Original sample weight (demographic column is constant)",8,0.0526315789473684,19,8,0.0526315789473684,19,0.777328019939166
+"LTU_2024","Lithuania","440",2024,1301,"Lithuania 2024","F1101_2","Original demographic weight",7.53333333333333,1,15,3.53333333333333,1,15,0.793178248397691
+"MKD_2024","North Macedonia","807",2024,1055,"North Macedonia 2024","F1101_2","Original demographic weight",3.625,0.8,20,7.52941176470588,0.708333333333333,24,0.826878090645644
+"MNE_2023","Montenegro","499",2023,1200,"Montenegro 2023","F1101_2","Original demographic weight",4.83333333333333,0.666666666666667,18,4.8,0.869565217391304,23,0.730841863005356
+"NZL_2023","New Zealand","554",2023,910,"New Zealand 2023","F1101_2","Original demographic weight",4,1,19,7,1,20,0.815365097790726
+"PHL_2022","Philippines","608",2022,1500,"Philippines 2022","F1101_1","Original sample weight (demographic column is constant)",NA,0,24,9,0.0833333333333333,24,0.716628986568156
+"POL_2023","Poland","616",2023,1500,"Poland 2023","F1101_2","Original demographic weight",8.08,0.925925925925926,27,4.79166666666667,0.888888888888889,27,0.811853171848103
+"PRT_2022","Portugal","620",2022,1010,"Portugal 2022","F1101_2","Original demographic weight",4,0.631578947368421,19,4,0.666666666666667,18,0.817642495933221
+"PRT_2024","Portugal","620",2024,1001,"Portugal 2024","F1101_2","Original demographic weight",4,0.631578947368421,19,7.15384615384615,0.722222222222222,18,0.823221798412214
+"SVK_2023","Slovakia","703",2023,1021,"Slovakia 2023","F1101_2","Original demographic weight",8.53846153846154,0.8125,16,3.70588235294118,1,17,0.826115003469039
+"SVN_2022","Slovenia","705",2022,855,"Slovenia 2022","F1101_2","Original demographic weight",8.64285714285714,0.777777777777778,18,4.52380952380952,1,21,0.762164421182514
+"SWE_2022","Sweden","752",2022,2845,"Sweden 2022","F1101_2","Original demographic weight",3,1,23,8.125,1,24,0.811192280826082
+"THA_2023","Thailand","764",2023,1500,"Thailand 2023","F1101_2","Original demographic weight",5.4375,0.888888888888889,36,6.41176470588235,1,34,0.841542278693826
+"TUR_2023","Turkiye","792",2023,1508,"Turkiye 2023","F1101_2","Original demographic weight",9,1,17,9,1,16,0.857525138487524
+"TWN_2024","Taiwan","158",2024,1206,"Taiwan 2024","F1101_2","Original demographic weight",NA,0,28,NA,0,34,0.683293369444587
+"USA_2024","United States of America","840",2024,4764,"United States 2024","F1101_2","Original demographic weight",NA,0,27,NA,0,25,0.784134626739159

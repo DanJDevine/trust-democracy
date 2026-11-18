@@ -1,0 +1,14 @@
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+data/*.dta
+data/*.sav
+data/*.rds
+data/*.csv
+tmp/
+*.log
+__pycache__/
+output/
+data/
+code/example/

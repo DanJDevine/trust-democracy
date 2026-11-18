@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore how trust in representative institutions relates to democratic attitudes across CSES election studies, with transparent modelling choices.">
+  <meta name="theme-color" content="#5B1A18">
+  <title>Trust & Democracy · CSES Explorer</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#explorer">Skip to the explorer</a>
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="Trust and Democracy home"><img src="assets/mark.svg" width="31" height="31" alt=""><span>Trust <i>&</i> Democracy</span></a>
+    <nav aria-label="Main navigation"><a href="#explorer">Explore the evidence <span aria-hidden="true">↗</span></a><a href="findings.html">Findings in words</a><a href="#methods">Methods & data</a><span class="release">CSES · MODULE 6</span></nav>
+  </header>
+
+  <main>
+    <section class="intro wrap" aria-labelledby="page-title">
+      <div class="intro-copy"><div class="eyebrow"><span class="dot"></span> A COMPARATIVE RESEARCH EXPLORER</div><h1 id="page-title">Does trust sustain<br><em>democratic support?</em></h1><p>A relationship that may depend on where you look.<br class="desktop-break"> Explore countries, institutions, and the choices behind the estimates.</p></div>
+      <aside class="intro-aside" aria-label="Dataset overview"><div class="edition">THE EVIDENCE BASE <span>01 / MODULE 6</span></div><div class="big-stat"><strong id="study-count">29</strong><span>election studies</span></div><div class="intro-numbers"><div><strong id="respondent-count">55,207</strong><span>respondents</span></div><div><strong>7</strong><span>separate outcomes</span></div></div><p>Post-election surveys · 2022–2026<br> Third Advance Release · supplied local data</p></aside>
+    </section>
+
+    <section id="explorer" class="explorer wrap" aria-label="Interactive analysis">
+      <aside class="controls-panel">
+        <div class="control-heading"><h2>Your specification</h2><button id="reset" class="text-button" type="button">Reset</button></div>
+        <p class="control-intro">Change a choice. Follow the evidence.</p>
+        <label for="predictor">01 <span>Trust measure</span></label><select id="predictor"></select><p class="hint" id="predictor-hint"></p>
+        <label for="outcome">02 <span>Outcome</span></label><select id="outcome"></select>
+        <div id="statement" class="statement"></div>
+        <label for="estimator">03 <span>Outcome model</span></label><select id="estimator"></select><p class="hint" id="estimator-hint"></p>
+        <label for="adjustment">04 <span>Adjustment</span></label><select id="adjustment"></select>
+        <label for="weighting">05 <span>Weighting</span></label><select id="weighting"></select><p class="hint">Study-specific original weights. Availability and complete cases vary.</p>
+        <div class="controls-bottom"><span class="small-dot"></span> Every choice is recorded in the URL.<button type="button" id="share" class="outline-button">Copy a link to this view <span aria-hidden="true">↗</span></button></div>
+      </aside>
+
+      <div class="workspace">
+        <div class="tabs" role="tablist" aria-label="Analysis views">
+          <button id="tab-compare" role="tab" aria-selected="true" aria-controls="panel-compare" data-tab="compare">Country comparison</button>
+          <button id="tab-detail" role="tab" aria-selected="false" aria-controls="panel-detail" data-tab="detail" tabindex="-1">Study detail</button>
+          <button id="tab-context" role="tab" aria-selected="false" aria-controls="panel-context" data-tab="context" tabindex="-1">Government ideology</button>
+          <button id="tab-robustness" role="tab" aria-selected="false" aria-controls="panel-robustness" data-tab="robustness" tabindex="-1">Robustness</button>
+          <button id="tab-findings" role="tab" aria-selected="false" aria-controls="panel-findings" data-tab="findings" tabindex="-1">Findings in words</button>
+        </div>
+        <div id="status" class="status" role="status" aria-live="polite">Loading the analysis…</div>
+        <div id="error" class="error" role="alert" hidden></div>
+        <div class="spec-strip"><span id="spec-description"></span><button type="button" id="download" class="text-button">Download estimates ↓</button></div>
+        <section id="panel-compare" class="view" role="tabpanel" aria-labelledby="tab-compare">
+          <div class="view-heading"><div class="eyebrow">THE RELATIONSHIP, STUDY BY STUDY</div><h2>One question. Different contexts.</h2><p id="comparison-subtitle"></p></div>
+          <div class="stats" id="comparison-stats"></div>
+          <div class="chart-card"><div class="chart-toolbar"><div><h3>From lowest to highest trust</h3><p>Points are estimates. Lines show 95% confidence intervals.</p></div><label class="inline-label" for="sort">Sort <select id="sort"><option value="effect">Association</option><option value="name">Study name</option></select></label></div>
+            <div class="legend"><span><i class="legend-dot green"></i> Positive</span><span><i class="legend-dot clay"></i> Negative</span><span><i class="legend-dot gray"></i> Interval includes zero</span></div>
+            <div id="forest-axis" class="axis-container"></div><div id="forest" class="forest-scroll"></div>
+            <div class="chart-footer"><span>← Less agreement</span><strong id="forest-unit"></strong><span>More agreement →</span></div>
+            <p class="chart-note">Select a study to inspect its predictions and sample. Intervals are pointwise and do not adjust for multiple comparisons.</p>
+          </div>
+          <details class="table-disclosure"><summary>View the estimates as a table</summary><div class="table-scroll" id="results-table"></div></details>
+          <div id="unavailable" class="subtle-note"></div>
+        </section>
+
+        <section id="panel-detail" class="view" role="tabpanel" aria-labelledby="tab-detail" hidden>
+          <div class="view-heading"><div class="eyebrow">LOOK INSIDE AN ELECTION STUDY</div><h2>What does the relationship look like?</h2><p>Predictions averaged over the respondents included in this model.</p></div>
+          <div class="view-tools"><label for="study">Election study <select id="study"></select></label></div>
+          <div id="detail-stats" class="stats"></div><div class="chart-card"><div class="chart-toolbar"><div><h3 id="detail-title"></h3><p id="curve-subtitle"></p></div></div><div class="legend"><span><i class="legend-dot green"></i> Model prediction & 95% interval</span><span><i class="legend-dot hollow"></i> Observed mean</span></div><div id="curve" class="responsive-chart"></div><p class="chart-note">Observed means use this model's complete cases. Index responses are grouped to the nearest displayed trust level. Predictions can extend beyond the observed range. Linear predictions and delta-method intervals can extend beyond 0–1.</p></div>
+          <div id="study-notes" class="study-notes"></div>
+        </section>
+
+        <section id="panel-context" class="view" role="tabpanel" aria-labelledby="tab-context" hidden>
+          <div class="view-heading"><div class="eyebrow">AN EXPLORATORY CONTEXT COMPARISON</div><h2>Does government ideology matter?</h2><p>Compare each study's trust association with a derived cabinet position.</p></div>
+          <div class="view-tools"><label for="timing">Cabinet <select id="timing"><option value="before">Before the election</option><option value="after">After the election</option></select></label><label for="coverage">Minimum portfolio coverage <select id="coverage"><option value="0.8">80% · default</option><option value="1">100% · complete cabinet</option><option value="0.5">50% · broader coverage</option></select></label></div>
+          <div id="context-stats" class="stats"></div><div class="chart-card"><div class="chart-toolbar"><div><h3>Cabinet position and the trust association</h3><p>One point per eligible election study. Studies have equal weight in the fitted line.</p></div></div><div id="context-chart" class="responsive-chart"></div><p class="chart-note">The line is a second-stage regression of estimated study associations on cabinet ideology. Its 95% interval uses country-clustered errors. It does not propagate first-stage estimation uncertainty or identify causal moderation.</p></div>
+          <div id="context-notes" class="study-notes"></div>
+          <details class="table-disclosure"><summary>Cabinet coverage and included studies</summary><div id="context-table" class="table-scroll"></div></details>
+        </section>
+
+        <section id="panel-robustness" class="view" role="tabpanel" aria-labelledby="tab-robustness" hidden>
+          <div class="view-heading"><div class="eyebrow">MAKE THE ANALYTICAL CHOICES VISIBLE</div><h2>How much do the results move?</h2><p>Compare adjustment and weighting choices within the selected outcome model.</p></div>
+          <div class="view-tools"><label for="robust-study">Election study <select id="robust-study"></select></label><label class="checkbox-label"><input type="checkbox" id="all-trust"> Compare all four trust measures</label></div>
+          <div id="robust-stats" class="stats"></div><div class="chart-card"><div class="chart-toolbar"><div><h3 id="robust-title">A small specification curve</h3><p>Same outcome and model family. Complete-case samples can change with adjustment.</p></div></div><div id="robust-chart" class="responsive-chart"></div><p class="chart-note">Specifications share respondents and are not independent replications. This grid is a sensitivity check, not an exhaustive multiverse or a search for significance.</p></div>
+          <details class="table-disclosure"><summary>Inspect these specifications</summary><div id="robust-table" class="table-scroll"></div></details>
+        </section>
+        <section id="panel-findings" class="view" role="tabpanel" aria-labelledby="tab-findings" hidden>
+          <!-- FINDINGS:START -->
+<article class="findings-copy" aria-labelledby="findings-title">
+  <div class="eyebrow">THE FINDINGS, IN EVERYDAY LANGUAGE</div>
+  <h2 id="findings-title">Trust goes with support for democracy.<br> <em>But the story has more than one part.</em></h2>
+  <p class="findings-lead">People who trust representative institutions more usually express stronger agreement that democracy is preferable to other forms of government. That does not mean they always favour checks on leaders, or agree about how political decisions should be made.</p>
+  <div class="findings-reference"><strong>Which results does this page describe?</strong><p>This is a fixed summary of the reference models: the average of trust in parliament, government and parties; separate election-study models; the five-category agreement scale; adjustment for age, gender and education; and the original survey weights where available. The seven outcomes are kept separate. Changing the explorer's settings does not rewrite this summary.</p><p>The source contains 55,207 respondents in 29 election studies. These reference models are available for 28 studies. France is absent from these adjusted comparisons because age and education are missing in the supplied file; its unadjusted models are available.</p></div>
+
+  <section class="finding-section"><div class="finding-number">01</div><div><h3>The clearest pattern concerns democracy's preferability</h3>
+    <p>In 24 of the 28 available studies, higher trust is associated with more agreement that democracy is always preferable to any other form of government, and the estimate's uncertainty range stays above zero. One study has a clear negative association; in the remaining 3, the range includes both positive and negative possibilities.</p>
+    <p>The broad pattern also appears when government, parliament and parties are examined separately: respectively 25, 24 and 23 studies have positive associations whose uncertainty ranges stay above zero. This finding is not solely a consequence of averaging the three trust questions.</p>
+    <p>Still, the estimated size varies. Taiwan has the largest positive estimate in this reference comparison. Great Britain has a smaller positive estimate. Türkiye has a negative estimate: people expressing more trust express less agreement that democracy is always preferable, after the included adjustments. Comparing separate estimates does not, on its own, establish a statistically reliable difference between countries.</p></div></section>
+
+  <section class="finding-section"><div class="finding-number">02</div><div><h3>Supporting democracy can coexist with accepting a rule-bending leader</h3>
+    <p>More trusting respondents also show more agreement that a strong leader may bend the rules in 14 studies, with uncertainty ranges above zero. In 4 studies, the association runs in the opposite direction. In 10, its direction remains uncertain.</p>
+    <p>These are separate patterns measured in the same surveys. They do not show that every person who supports democracy also accepts rule-bending, or that trust causes either view. They suggest that saying “democracy is preferable” does not capture every part of a person's democratic outlook.</p>
+    <p>Views about courts tell a less consistent story: 4 studies have clear positive associations, 7 have negative ones, and 17 have ranges that include zero. On women's representation, more trust goes with less agreement that policies have “gone too far” in 17 studies, but with more agreement in 7. The questions should be read individually.</p></div></section>
+
+  <section class="finding-section"><div class="finding-number">03</div><div><h3>Trust is often linked to less appetite for alternatives to elected politicians</h3>
+    <p>The decision-preference questions ask whether important decisions would be better left to business leaders, independent experts, or citizens in referendums, instead of elected politicians.</p>
+    <p>Higher trust is linked to less support for replacing elected politicians with independent experts in 14 studies, and with citizens in referendums in 17. There are positive associations in 4 and 3 studies respectively. Results for business leaders are more mixed: 9 negative associations, 6 positive ones, and 13 uncertain directions.</p>
+    <p>A response to these questions is not a complete verdict on democracy. For example, favouring referendums can express a preference for a different form of democratic decision-making.</p></div></section>
+
+  <section class="finding-section"><div class="finding-number">04</div><div><h3>Government ideology does not yet provide a clear explanation</h3>
+    <p>The dashboard estimates cabinet positions by combining expert assessments of parties with the number of cabinet posts they hold. Some cabinet members or parties have no usable ideological position.</p>
+    <p>For the pre-election comparison, requiring positions for at least 80% of cabinet posts leaves 15 studies. The fitted line suggests a less positive trust–democracy association under cabinets placed further right, but the uncertainty range includes both a negative and a positive relationship. These results do not give a clear answer about government ideology.</p>
+    <p>This comparison has limited coverage and few countries. It compares patterns between studies, rather than showing how a particular government changes an individual's attitudes. A pre- or post-election cabinet may also differ from the government in office on the interview date.</p></div></section>
+
+  <section class="finding-section"><div class="finding-number">05</div><div><h3>Use the explorer to check how choices change the picture</h3>
+    <p>The default analysis is one reasonable way to examine the question. Visitors can change the trust measure, include fewer or more controls, turn weighting off, or analyse agreement as a yes/no outcome. The Robustness view compares the declared control and weighting choices for a study.</p>
+    <p>For scale, the Great Britain estimate for democracy's preferability corresponds to about 0.38 points on the original five-point agreement scale when comparing the lowest with the highest possible trust. That is an estimated contrast between the extremes, not a typical person's change, a correlation coefficient, or a percentage-point change in the population.</p>
+    <p>More controls can also mean fewer respondents with complete answers. A change in the estimate can reflect both adjustment and a different sample. The dashboard reports the sample size for each model.</p></div></section>
+
+  <details class="findings-counts"><summary>See the study counts behind this summary</summary><p>Each row describes 28 available election studies, using the same reference choices. “Uncertain direction” means the 95% confidence interval includes zero; it does not prove there is no relationship. A positive association always means more agreement with the statement, including the rule-bending and “gone too far” statements.</p><div class="table-scroll"><table><thead><tr><th scope="col">Statement / decision preference</th><th scope="col">More agreement</th><th scope="col">Less agreement</th><th scope="col">Uncertain direction</th></tr></thead><tbody><tr><th scope="row">Democracy is preferable</th><td>24</td><td>1</td><td>3</td></tr><tr><th scope="row">Courts constrain government</th><td>4</td><td>7</td><td>17</td></tr><tr><th scope="row">A leader may bend the rules</th><td>14</td><td>4</td><td>10</td></tr><tr><th scope="row">Women&#x27;s representation has gone too far</th><td>7</td><td>17</td><td>4</td></tr><tr><th scope="row">Decisions by business leaders</th><td>6</td><td>9</td><td>13</td></tr><tr><th scope="row">Decisions by independent experts</th><td>4</td><td>14</td><td>10</td></tr><tr><th scope="row">Decisions by citizens in referendums</th><td>3</td><td>17</td><td>8</td></tr></tbody></table></div></details>
+  <div class="findings-caution"><h3>What these results cannot establish</h3><p>These are associations from post-election surveys. We cannot tell whether trust changes attitudes, attitudes change trust, or other factors influence both. An uncertainty range that excludes zero is not proof of causation or practical importance. Many comparisons are shown without a correction for looking at many results, and the available survey information does not reconstruct each country's full sampling design. The findings describe this preliminary release and these model choices.</p></div>
+  <div class="findings-actions"><a href="analysis-decisions.txt" download>Download every analysis decision (.txt) ↓</a><a href="findings.html">Open this summary as a separate page ↗</a></div>
+  <p class="findings-source">Source: CSES Module 6 Third Advance Release, VER2026-NOV-17. Reference results generated 2026-11-18. The summary is rebuilt from the saved results; the wording should be reviewed if the underlying data or models change.</p>
+</article>
+<!-- FINDINGS:END -->
+        </section>
+        <div class="interpretation"><span aria-hidden="true">↗</span><p><strong>Association, with context.</strong> These surveys cannot establish whether trust changes democratic attitudes or the reverse. Country differences also reflect elections, survey timing, sampling, and measurement.</p></div>
+      </div>
+    </section>
+
+    <section class="methods wrap" id="methods" aria-labelledby="methods-title"><div class="methods-intro"><div class="eyebrow">READ THE SMALL PRINT</div><h2 id="methods-title">Open choices.<br>Traceable evidence.</h2><p>A reproducible R pipeline creates the estimates. This dashboard serves aggregate results only, with no respondent records.</p><a href="results/catalog.json" download>Download the data catalogue ↗</a></div><div class="method-details">
+      <details open><summary>Measures and direction</summary><p>Representative trust is measured by parliament (F3007_1), government (F3007_2), and parties (F3007_5). Each is recoded from 1–4 to 0–1, with 1 meaning most trust. The index is their equal-weight mean, requiring all three responses. There is no separate politicians item in this battery. Other trust targets are outside this version's scope. Index reliability is reported by study; cross-country measurement invariance is not assumed.</p><p>All seven outcomes remain separate. Higher values always mean more agreement with the actual statement. Q04c and Q04d are not reversed into a common democratic-support scale. Q05 preferences are additional outcomes.</p></details>
+      <details><summary>Models, predictions, and samples</summary><p>Linear models retain all five response categories, recoded (5 − response)/4. Logistic models contrast strongly/somewhat agree (1–2) with neutral/disagree (3–5). This dichotomization is a sensitivity choice; ordinal models are not included. Refusals, don't-knows, missing values, and study-note codes outside the valid response ranges are excluded.</p><p>Models are fit separately to each election study. Controls are no controls; age (linear), gender, and three education groups; or these demographics plus personal left–right position (linear, 0–10). Gender includes the available non-binary/another category. No income control is included because of additional missingness. Constant controls are omitted and disclosed. Each fit requires at least 80 complete cases, three trust values, outcome variation, and a nonsingular converged fit.</p><p>Displayed associations compare predictions at trust 1 versus trust 0, averaged over each fit's estimation sample using its analysis weights. Logistic contrasts use the response-probability scale and delta-method intervals; linear contrasts use the normalized agreement scale. The estimands differ across model families. Predictions are adjusted marginal means, not the response of an otherwise identical real respondent.</p></details>
+      <details><summary>Weights and uncertainty</summary><p>The supplied F1103_* and F1105_* derived weight columns are all constant at 1. The pipeline therefore prefers varying original demographic weights (F1101_2), falls back to varying original sample weights (F1101_1), and otherwise uses unit weights. Political weights are not used. Great Britain's weight location differs from its design report; the source column is disclosed. Weights are normalized within study. Nonpositive or nonfinite weights are excluded.</p><p>Fits use survey::svyglm with respondent-level sandwich errors and t-based 95% intervals. Respondents are treated as independent sampling units: harmonized PSU/strata identifiers are unavailable in the supplied file, so these intervals do not reconstruct the full national complex-sample designs. Kish effective sample size describes weight dispersion only. It is not a full design-adjusted effective sample size. Intervals are pointwise and no multiplicity correction is applied. The median association gives every available study equal weight; it is not a pooled individual-level effect.</p></details>
+      <details><summary>Government ideology and comparability</summary><p>Cabinet ideology is the portfolio-weighted mean of expert party left–right positions (F5029_A–I), using pre-election portfolios F5021_A–I or post-election portfolios F5022_A–I. Coverage is positioned portfolios divided by total cabinet size (F5021_2 / F5022_2). Independents and parties without positions contribute to uncovered portfolios. Unknown portfolio counts are excluded; zero portfolios are valid; coded missing values are never treated as portfolios. Incoherent coverage above 100% is unavailable. The selected coverage threshold determines inclusion.</p><p>Positions describe the covered cabinet share, which can be selective even above 80%. Before/after cabinets need not match the government in office on each interview date. The context chart is an ecological second-stage comparison, with equal-study OLS and country-clustered intervals (t with countries − 1 degrees of freedom); it is not an individual-level interaction test. At least eight studies and six countries are required. Countries and regional samples can differ in the parties covered and expert placements.</p><p>Portugal's elections remain separate. Belgium's Flanders and Wallonia samples also remain separate; both share Belgium's country cluster for context inference. The supplied release contains preliminary data and documentation discrepancies. No external corrections have been silently applied.</p></details>
+      <details><summary>Source, reproducibility, and hosting</summary><p id="citation">CSES Module 6 Third Advance Release. See the data catalogue for the version and DOI embedded in the supplied file.</p><p>The project includes R cleaning and model scripts, study and missingness audits, a full CSV of estimates, and instructions for rebuilding. <a href="analysis-decisions.txt" download>Download the complete coding and analysis decisions (.txt)</a>, including the exact missing-value rules and study-specific sample counts. All modelling choices are precomputed; visitors select the declared grid rather than fit arbitrary new formulas. Share a view using its URL or download the current estimates.</p><p>This site uses relative paths and no external runtime dependencies. It can be hosted from a GitHub repository's docs folder using <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener">GitHub Pages</a>. Model uncertainty follows the <a href="https://r-survey.r-forge.r-project.org/pkgdown/docs/reference/svyglm.html" target="_blank" rel="noopener">survey package documentation</a>.</p></details>
+    </div></section>
+  </main>
+  <footer class="wrap"><span>Trust & Democracy</span><p>CSES Module 6 · A reproducible exploration</p><a href="#page-title">Back to top ↑</a></footer>
+  <noscript><p class="error">JavaScript is needed to explore the estimates. Aggregate JSON files remain available in the results folder.</p></noscript>
+</body>
+</html>
