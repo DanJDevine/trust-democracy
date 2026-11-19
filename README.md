@@ -18,30 +18,6 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory docs
 
 Open [the local dashboard](http://127.0.0.1:8765). A local preview server is needed because the site loads aggregate JSON files; opening `index.html` directly with a `file:` URL will not reliably work.
 
-## Publish with GitHub Pages
-
-The completed dashboard is in `docs/`. It needs no Node, R, build process, API key, external JavaScript library, or paid application server to run.
-
-1. Add the project to a GitHub repository. The `.gitignore` excludes the raw `.dta` file and other respondent-level data formats. Generated results contain aggregates only.
-2. In the repository, open **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Choose your branch (usually `main`) and the **`/docs`** folder, then save.
-5. GitHub will supply the site's published URL. Relative asset paths support project URLs such as `https://USERNAME.github.io/REPOSITORY/`.
-
-The publishing target is [DanJDevine/trust-democracy](https://github.com/DanJDevine/trust-democracy), using `main` and `/docs`. The dashboard address after deployment is [danjdevine.github.io/trust-democracy](https://danjdevine.github.io/trust-democracy/). GitHub documents the available [publishing sources](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
-
-If you only want to publish the site, upload `docs/` to your chosen repository along with this README. Preserve all files in `docs/results/` and the hidden `docs/.nojekyll` file. Visitors can share a specification using the copy-link button and download the current estimates as CSV.
-
-To publish later changes from this checkout, run:
-
-```sh
-git add docs code tables figures README.md ANALYSIS_DECISIONS.txt .gitignore
-git commit -m "Update dashboard and analysis"
-git push origin main
-```
-
-GitHub Pages republishes when changes reach `main`. Rebuild the analysis first if the data or modelling code changed; see the rebuild commands below. The raw `data/` directory, generated `output/` packages and original `code/example/` scripts are ignored by Git.
-
 ## Explore
 
 - **Findings in words:** a plain-language page covering the seven outcomes, country variation, cabinet ideology and uncertainty. It is a fixed summary of the reference models, not a live account of a visitor's selected specification. Open `docs/findings.html` or the dashboard's **Findings in words** tab. The standalone copy includes the same reading view.
